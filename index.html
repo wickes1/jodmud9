@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jodmud9's Doggo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .dog-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .dog-image:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .paw-print {
+            font-size: 2em;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Woof! Meet Jodmud9's Doggo</h1>
+        <img src="jodmud9.webp" alt="Jodmud9's Dog" class="dog-image" id="dogImage">
+    </div>
+
+    <script>
+        const dogImage = document.getElementById('dogImage');
+        const container = document.querySelector('.container');
+
+        dogImage.addEventListener('mouseover', () => {
+            createPawPrints();
+        });
+
+        function createPawPrints() {
+            for (let i = 0; i < 5; i++) {
+                const pawPrint = document.createElement('div');
+                pawPrint.textContent = '🐾';
+                pawPrint.className = 'paw-print';
+                pawPrint.style.left = `${Math.random() * 100}%`;
+                pawPrint.style.top = `${Math.random() * 100}%`;
+                document.body.appendChild(pawPrint);
+
+                setTimeout(() => {
+                    pawPrint.style.opacity = '1';
+                }, i * 200);
+
+                setTimeout(() => {
+                    pawPrint.style.opacity = '0';
+                    setTimeout(() => {
+                        pawPrint.remove();
+                    }, 500);
+                }, 2000 + i * 200);
+            }
+        }
+    </script>
+</body>
+</html>
