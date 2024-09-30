@@ -5,40 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jodmud9's Doggo</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #ffefd5;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .container {
             text-align: center;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 400px;
         }
         h1 {
-            color: #333;
-            font-size: 2.5em;
+            font-family: 'Fredoka One', cursive;
+            color: #ff6b6b;
+            font-size: 2em;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         .dog-image {
             max-width: 100%;
             height: auto;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
         .dog-image:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.05) rotate(3deg);
         }
         .paw-print {
             font-size: 2em;
-            position: absolute;
+            position: fixed;
             opacity: 0;
             transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -46,6 +71,7 @@
     <div class="container">
         <h1>Woof! Meet Jodmud9's Doggo</h1>
         <img src="jodmud9.webp" alt="Jodmud9's Dog" class="dog-image" id="dogImage">
+        <div class="footer">Hover over the image for a surprise! 🐾</div>
     </div>
 
     <script>
@@ -61,8 +87,8 @@
                 const pawPrint = document.createElement('div');
                 pawPrint.textContent = '🐾';
                 pawPrint.className = 'paw-print';
-                pawPrint.style.left = `${Math.random() * 100}%`;
-                pawPrint.style.top = `${Math.random() * 100}%`;
+                pawPrint.style.left = `${Math.random() * 100}vw`;
+                pawPrint.style.top = `${Math.random() * 100}vh`;
                 document.body.appendChild(pawPrint);
 
                 setTimeout(() => {
